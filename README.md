@@ -17,20 +17,21 @@ This project is a simple CRUD application built with FastAPI. It allows you to m
 ```bash
 git clone https://github.com/yourusername/fastapi-crud.git
 cd fastapi-crud
-
+```
 ### Create a virtual environment and install dependencies
-
+```
 python -m venv venv
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 pip install -r requirements.txt
-
+```
 
 ### Set up environment variables
 Create a .env file in the root directory and add the following:
-
+```
 DATABASE_URL=sqlite:///./test.db
-
+```
 ### Run the application
+```
 uvicorn main:app --reload
-
+```
 
