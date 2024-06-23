@@ -1,25 +1,21 @@
-import React, { useState } from "react";
+// src/App.js
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProduceList from "./components/ProduceList";
 import ProduceForm from "./components/ProduceForm";
 import "./App.css";
 
 function App() {
-  const [produceToEdit, setProduceToEdit] = useState(null);
-
-  const handleEdit = (produce) => {
-    setProduceToEdit(produce);
-  };
-
-  const handleSave = () => {
-    setProduceToEdit(null);
-  };
-
   return (
-    <div className="App">
-      <h1>FastAPI CRUD with React</h1>
-      <ProduceForm produceToEdit={produceToEdit} onSave={handleSave} />
-      <ProduceList onEdit={handleEdit} />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/add" element={<ProduceForm />} />
+          <Route path="/edit/:id" element={<ProduceForm />} />
+          <Route path="/" element={<ProduceList />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

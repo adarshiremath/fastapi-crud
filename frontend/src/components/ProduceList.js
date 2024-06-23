@@ -1,8 +1,19 @@
+// src/components/ProduceList.js
 import React, { useState, useEffect } from "react";
 import { getAllProduce, deleteProduce } from "../services/produceService";
+import {
+  List,
+  ListItem,
+  ListItemText,
+  Button,
+  Container,
+  Typography,
+} from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-const ProduceList = ({ onEdit }) => {
+const ProduceList = () => {
   const [produce, setProduce] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchProduce();
@@ -19,18 +30,39 @@ const ProduceList = ({ onEdit }) => {
   };
 
   return (
-    <div>
-      <h1>Produce List</h1>
-      <ul>
+    <Container>
+      <Typography variant="h4" component="h1" gutterBottom>
+        Produce List
+      </Typography>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => navigate("/add")}
+      >
+        Add Produce
+      </Button>
+      <List>
         {produce.map((item) => (
-          <li key={item.id}>
-            {item.name} - {item.description}
-            <button onClick={() => onEdit(item)}>Edit</button>
-            <button onClick={() => handleDelete(item.id)}>Delete</button>
-          </li>
+          <ListItem key={item.id} divider>
+            <ListItemText primary={item.name} secondary={item.description} />
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => navigate(`/edit/${item.id}`)}
+            >
+              Edit
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => handleDelete(item.id)}
+            >
+              Delete
+            </Button>
+          </ListItem>
         ))}
-      </ul>
-    </div>
+      </List>
+    </Container>
   );
 };
 
