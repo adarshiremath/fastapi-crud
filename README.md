@@ -16,12 +16,15 @@ This repository contains a React frontend and a FastAPI backend, both containeri
    git clone <repository-url>
    cd my-project
    ```
+   
 2. **Build and Start the Services**
 
 Build the Docker images and start the containers using Docker Compose:
+
     ```
     docker-compose up --build
     ```
+
 3. **Access the Services**
 
 Frontend: Open http://localhost:3000 in your web browser to access the React frontend.
